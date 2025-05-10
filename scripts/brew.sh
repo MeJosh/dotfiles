@@ -1,49 +1,35 @@
-#!/users/bin/env bash
+# ~/Projects/dotfiles/scripts/brew.sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Make sure we're using the latest Homebrew
-brew update
+# ─── Configuration ────────────────────────────────────────────────────────────
 
-# Upgrade any alread-installed formulae
-brew upgrade
+# Repo root is one level up from this script
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# Path to a Brewfile in your repo (if you use one)
+BUNDLE_FILE="$DOTFILES_ROOT/Brewfile"
 
-# System Utils & setup
-brew install stow
-brew install grep
-brew install openssh
+# ─── Dependency check ──────────────────────────────────────────────────────────
 
-# Terminal tools
-brew install tmux
-brew install superfile
-brew install nvim
-brew install eza
-brew install zoxide
-brew install zstd
-brew install lazydocker
-brew install lazygit
-brew install btop
-brew install tree
-brew install as-tree
+if ! command -v brew &>/dev/null; then
+  echo "❌  Homebrew not found. Installing Homebrew…"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-# Development
-brew install git
-brew install git-lfs
-git lfs install
+# ─── Install packages ─────────────────────────────────────────────────────────
 
-brew install node
-brew install nvm
+if [[ -f "$BUNDLE_FILE" ]]; then
+  echo "💧  Running brew bundle → $BUNDLE_FILE"
+  brew bundle --file="$BUNDLE_FILE"
+else
+  if [[ $# -lt 1 ]]; then
+    echo "Usage: $(basename "$0") <formula> [formula…]" >&2
+    exit 1
+  fi
+  for pkg in "$@"; do
+    echo "💧  brew install $pkg"
+    brew install "$pkg"
+  done
+fi
 
-# Utilities
-brew install ffmpeg
-
-# Applications
-brew install --cask aerospace
-brew install --cask raycast
-brew install --cask ghostty
-brew install --cask firefox
-brew install --cask docker
-brew install --cask vlc
-brew install --cask obsidian
-brew install --cask visual-studio-code
-
-# Remove outdated versions from the cellar
-brew cleanup
+echo "✅  brew.sh complete."
