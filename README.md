@@ -50,9 +50,19 @@ This will:
 2. Run `brew update && brew upgrade` to update Homebrew itself and all installed formulae
 3. Re-run `install.sh` to reapply stows and sync any changes
 
-Install homebrew from instructions on [brew.sh](https://brew.sh/)
+---
+
+## CLI Helper
+
+After installation, you can use the `dotfiles` convenience command in your shell for quick routines:
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+dotfiles install        # bootstrap Homebrew, run brew bundle, and stow default packages
+
+dotfiles update         # pull repo updates, upgrade brew packages, and re-stow
+
+dotfiles stow <package> # link a specific stow module (e.g. git, ohmyzsh)
 ```
+
+Make sure to reload your shell or run `source ~/.zshrc` if you update `~/.zshrc` with the helper function.
 

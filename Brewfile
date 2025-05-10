@@ -20,6 +20,7 @@ brew "lazygit"
 brew "btop"
 brew "tree"
 brew "as-tree"
+brew "zsh"
 
 # ─── Development ───────────────────────────────────────────────────────────────
 brew "git"
