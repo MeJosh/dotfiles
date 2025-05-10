@@ -14,3 +14,4 @@ Initial creation and migration to the dotfiles repository. Trying some things ou
 
 - Started installation instructions inside README.md
 - Created brew.sh with existing shared brew packaged used on various machines
+- Adding in .gitconfig file
