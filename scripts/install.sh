@@ -7,6 +7,18 @@ set -euo pipefail
 DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SCRIPTS_DIR="$DOTFILES_ROOT/scripts"
 
+# ─── Make sure all your helper scripts are executable ──────────────────────────
+
+echo "🔧  Making all scripts in $SCRIPTS_DIR executable"
+chmod +x "$SCRIPTS_DIR"/*.sh
+
+# ─── Ensure Homebrew is installed ──────────────────────────────────────────────
+
+if ! command -v brew &>/dev/null; then
+  echo "🍺  Homebrew not found. Installing Homebrew…"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # ─── Default packages to stow ─────────────────────────────────────────────────
 
 # Edit this list to add more stow “packages” by folder-name
