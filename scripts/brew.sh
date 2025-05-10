@@ -1,4 +1,3 @@
-# ~/Projects/dotfiles/scripts/brew.sh
 #!/usr/bin/env bash
 set -euo pipefail
 
