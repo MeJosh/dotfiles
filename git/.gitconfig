@@ -2,6 +2,9 @@
     email = josh@joshelliott.me
     name = Josh
 
+[github]
+    username = MeJosh
+
 [init]
     defaultBranch = main
 
