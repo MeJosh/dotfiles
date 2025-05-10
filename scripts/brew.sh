@@ -21,6 +21,8 @@ brew install zstd
 brew install lazydocker
 brew install lazygit
 brew install btop
+brew install tree
+brew install as-tree
 
 # Development
 brew install git
