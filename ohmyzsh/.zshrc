@@ -140,3 +140,19 @@ dotfiles() {
   esac
 }
 
+# ─── Git Status helper ────────────────────────────────────────────────────────
+# Usage:
+#   gitstatus [directory] [options]
+gitstatus() {
+  # Check if the first argument is a valid directory
+  if [[ -d "$1" ]]; then
+    local directory="$1"
+    shift # Remove the directory argument from the list
+  else
+    # Default to ~/Projects if no valid directory is provided
+    local directory="$HOME/Projects"
+  fi
+
+  # Pass the directory and remaining arguments to the script
+  "$HOME/Projects/dotfiles/scripts/gitstatus.sh" "$directory" "$@"
+}
