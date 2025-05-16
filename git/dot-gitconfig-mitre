@@ -1,0 +1,13 @@
+[user]
+    email = jwelliott@mitre.org
+    name = Josh Elliott
+
+[init]
+    defaultBranch = main
+
+[filter "lfs"]
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+

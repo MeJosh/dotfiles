@@ -1,7 +1,5 @@
-# ~/Projects/dotfiles/Brewfile
-
 # ─── Homebrew taps ─────────────────────────────────────────────────────────────
-# (nothing custom here right now; you can add lines like `tap "homebrew/cask"` if you need them)
+tap "FelixKratz/formulae"
 
 # ─── System utils & setup ────────────────────────────────────────────────────
 brew "stow"
@@ -21,12 +19,23 @@ brew "btop"
 brew "tree"
 brew "as-tree"
 brew "zsh"
+brew "nushell"
 
 # ─── Development ───────────────────────────────────────────────────────────────
 brew "git"
 brew "git-lfs"
 
-# ─── JavaScript & runtimes ────────────────────────────────────────────────────
+# ─── JavaScript & runtimes ─────────────────────────────────────────────────────
 brew "node"
 brew "nvm"
+
+# ─── Custom tools [FelixKratz] ─────────────────────────────────────────────────
+brew "sketchybar"
+brew "borders"
+
+# ─── Fonts ─────────────────────────────────────────────────────────────────────
+cask "font-hack-nerd-font"
+
+# ─── Applications ──────────────────────────────────────────────────────────────
+cask "raycast"
 
