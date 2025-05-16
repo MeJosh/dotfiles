@@ -25,7 +25,7 @@ fi
 cd "$DOTFILES_ROOT"
 for pkg in "$@"; do
   echo "👉  stowing '$pkg' → $TARGET_DIR"
-  stow "$pkg" --target="$TARGET_DIR" --adopt
+  stow "$pkg" --target="$TARGET_DIR" --adopt --dotfiles
 done
 
 echo "✅  Done."
